@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+    {% block title %}Bid{% endblock %}
+{% block content %}
+    <div class="d-flex justify-content-center align-items-center">
+        <div class="w-50">
+            {% if messages %}
+            {% for msg in messages %}
+            <div class="alert alert-{{ msg.tags }}" role="alert">
+                {{ msg }}
+            </div>
+            {% endfor %}
+            {% endif %}
+        </div>
+    </div>
+    <div class="jumbotron mx-auto">
+    <img height="300" class="rounded mx-auto d-block" width="250" src="{{ auction.image.url }}" alt="">
+      <h1 class="display-4">{{ auction.name }}</h1>
+      <p class="lead">{{ auction.desc }}</p>
+      <hr class="my-4">
+      <h3 class="display-6">Minimum Bid Amount: {{ auction.min_amount }}</h3>
+      <form action="" method="post">
+        {% csrf_token %}
+          <div class="w-25 form-group">
+              {{ forms.amount }}
+          </div>
+        <input class="btn-success btn p2" type="submit" value="Submit">
+    </form>
+</div>
+
+{% endblock %}

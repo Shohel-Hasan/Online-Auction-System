@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+    {% block title %}All Auctions{% endblock %}
+{% block content %}
+
+    <div class="row row-cols-1 row-cols-md-4">
+        {% for auction in all_auctions %}
+              <div class="col mb-4">
+                <div class="card">
+                  <img height="300px" src="{{ auction.image.url }}" class="card-img-top" alt="...">
+                  <div class="card-body">
+                    <h5 class="card-title text-light bg-dark p-2">{{ auction.name|title }}</h5>
+                          <p class="card-text">{{ auction.desc|title|truncatechars:50 }}</p>
+                        <p class="card-text">{{ auction.start_time }}</p>
+                        <a href="/profile/{{ auction.user }}/" class="card-text">{{ auction.user|title }}</a>
+                  </div>
+                </div>
+              </div>
+        {% endfor %}
+    </div>
+{% endblock %}

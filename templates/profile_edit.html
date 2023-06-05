@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+
+{% block title %}Login{% endblock %}
+
+{% block content %}
+    <div class="d-flex justify-content-center align-items-center">
+        <div class="w-50">
+            {% if messages %}
+            {% for msg in messages %}
+            <div class="alert alert-{{ msg.tags }}" role="alert">
+                {{ msg }}
+            </div>
+            {% endfor %}
+            {% endif %}
+        {% if forms.errors %}
+            {% for key, val in forms.errors.items %}
+                <div class="alert alert-danger" role="alert">
+                {{ key }} {{ val }}
+                </div>
+            {% endfor %}
+        {% endif %}
+        </div>
+    </div>
+
+    <div class="d-flex justify-content-center align-items-center p-3">
+        <div class="w-50">
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+          <div class="form-group">
+            <label for="id_first_name">First Name</label>
+           {{ forms.first_name }}
+          </div>
+          <div class="form-group">
+            <label for="exampleInputPassword1">Last Name</label>
+            {{ forms.last_name }}
+          </div>
+            <div class="form-group">
+            <label for="exampleInputPassword1">Email</label>
+            {{ forms.email }}
+          </div>
+            <div class="form-group">
+            <label for="exampleInputPassword1">Designation</label>
+            {{ forms.designation }}
+          </div>
+            <div class="form-group">
+            <label for="exampleInputPassword1">About</label>
+            {{ forms.about }}
+          </div>
+            <div class="form-group">
+            <label for="exampleInputPassword1">Facebook URL</label>
+            {{ forms.facebook }}
+          </div>
+            <div class="form-group">
+            <label for="exampleInputPassword1">Instagram URL</label>
+            {{ forms.instagram }}
+          </div>
+            <div class="form-group">
+            <label for="exampleInputPassword1">LinkedIn URL</label>
+            {{ forms.linkedin }}
+          </div>
+            <div class="form-group">
+            <label for="exampleInputPassword1">Image</label>
+            {{ forms.image }}
+          </div>
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+    </div>
+{% endblock %}
